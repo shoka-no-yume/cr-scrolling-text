@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create cool Crypto Royale scrolling text GIFs!">
+    <meta name="keywords" content="Crypto, Royale, Nano, ROY, gif, scrolling, text, pips">
+    <meta name="author" content="ROY_TO_THE_MOON">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>How much ROY</title>
+</head>
+<body>
+    <div id="app">
+        <svg class="logo" viewbox="0 0 10 1.3">
+            <text id="desktop-logo" x="5" y="1" text-anchor="middle" font-size="1" fill="none" stroke-width=".015" stroke="#000" font-family="sans-serif">{{title}}</text>
+            <text id="mobile-logo" x="5" y="1" text-anchor="middle" font-size="1" fill="none" stroke-width=".030" stroke="#000" font-family="sans-serif">{{title}}</text>
+        </svg>
+        <div>
+            <p>Type your text below and press the button to create cool scrolling text GIF!</p>
+            <p><input v-model="text" type="text" placeholder="Your text"></p>
+            <p><a href="#" @click="toggleSettings">{{advanced ? 'Hide' : 'Show'}} advanced settings</a></p>
+            <div v-if="advanced">
+                <p>Valid colors: {{validColors}}</p>
+                <p>Valid characters: {{charList}}</p>
+                <p><label>Framerate: </label><input v-model.number="fps" type="number" min="1" max="240"></p>
+                <p><label>GIF speed: </label><input v-model.number="gifSpeed" type="number" min="1" max="50"></p>
+                <p><label>GIF width: </label><input v-model.number="gifWidth" type="number" min="24" max="1920"></p>
+                <p><label>Pip order: </label><input v-model="pipOrder" type="text" min="4" max="79"></p>
+            </div>
+            <p><button :disabled="!text" @click="createGIF">Create GIF</button></p>
+            <p><button :disabled="!text" @click="createPNG">Create PNG</button></p>
+            <p>To see progress while generating GIFs - open dev console in web browser (F12)</p>
+        </div>
+        <div style="display: none;">
+            <img id="cyan_pip" src="img/cyan.png">
+            <img id="magenta_pip" src="img/magenta.png">
+            <img id="yellow_pip" src="img/yellow.png">
+            <img id="royale_pip" src="img/royale.png">
+            <img id="harmony_pip" src="img/harmony.png">
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3.0.5/dist/vue.global.prod.js"></script>
+    <script src="libs/CCapture.all.min.js"></script>
+    <script src="libs/gif.worker.js"></script>
+    <script src="font.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

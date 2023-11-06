@@ -1,0 +1,29 @@
+html {
+  background: url(/cr-scrolling-text/img/bg.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+body {
+  font-family: "Lato", sans-serif;
+  text-align: center;
+}
+svg.logo {
+  max-width: 1000px;
+}
+#mobile-logo {
+  display: none;
+}
+canvas {
+  border: 1px solid black;
+}
+@media only screen and (max-width: 600px) {
+  /* For mobile phones: */
+  #desktop-logo {
+    display: none;
+  }
+  #mobile-logo {
+    display: inline;
+  }
+}
